@@ -2,6 +2,7 @@ const path = require('path');
 const MiniCssExtractPlugin = require("mini-css-extract-plugin");
 const CopyPlugin = require("copy-webpack-plugin");
 const ImageMinimizerPlugin = require("image-minimizer-webpack-plugin");
+const webpack = require('webpack');
 
 module.exports = {
   mode: 'production',
@@ -19,6 +20,10 @@ module.exports = {
         { from: "src/img/", to: "images/" },
       ],
     }),
+    new webpack.ProvidePlugin({
+      $: 'jquery',
+      jQuery: 'jquery',
+    })
   ],
   module: {
     rules: [
